@@ -8,6 +8,7 @@ public class Ciclo3Application {
 
 	public static void main(String[] args) {
 		SpringApplication.run(Ciclo3Application.class, args);
+		System.out.println("hello word");
 	}
 
 }
