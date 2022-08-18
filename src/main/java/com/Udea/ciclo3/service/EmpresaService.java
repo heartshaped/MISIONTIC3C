@@ -26,6 +26,8 @@ public class EmpresaService {
 
     public boolean saveOrUpdateEmpresa(Empresa empresa)
     {
+        //metodo para guardar empresa haciendo una busqueda de id y si es verdadero hace el cambio y en caso contrario no
+        // se usa el findbyid y el get para busca el id de la empresa
         Empresa emp=empresaRepository.save(empresa);
         if (empresaRepository.findById(emp.getId())!=null)
         {
