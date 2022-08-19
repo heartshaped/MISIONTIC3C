@@ -19,7 +19,7 @@ public class EmpresaService {
 
         return empresaList;
     }
-//METODO QUE ME TRAE UN OBJETO DE TIPO EMPRESA CUANDO CUENTO CON UN ID
+        //METODO QUE ME TRAE UN OBJETO DE TIPO EMPRESA CUANDO CUENTO CON UN ID
     public Empresa getEmpresaById(Integer id){
         return empresaRepository.findById(id).get();
     }
@@ -34,6 +34,16 @@ public class EmpresaService {
             return true;
         }
         return false;
+    }
+
+    //metodo eliminar empresa registrada
+
+    public boolean deleteEmpresa(Integer id){
+        empresaRepository.deleteById(id);
+        if(getEmpresaById(id)!=null){
+            return false;
+        }
+        return true;
     }
 
 }

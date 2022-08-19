@@ -8,14 +8,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @SpringBootApplication(exclude = {SecurityAutoConfiguration.class})
-@RestController
+//@RestController
 
 public class Ciclo3Application {
-
-	@GetMapping("/hello")
-	public String hello (){
-		return "Sobreviviendo a java";
-	}
+	//desactivo para pasar el controlador a metodo controlador en paquete controllador
+	//@GetMapping("/hello")
+	//public String hello (){
+	//	return "Sobreviviendo a java";
+	//}
 
 	@GetMapping("/test")
 	public String test (){
