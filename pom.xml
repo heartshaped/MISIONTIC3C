@@ -8,13 +8,13 @@
 		<version>2.7.2</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.Udea</groupId>
+	<groupId>com.UdeA</groupId>
 	<artifactId>ciclo3</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>ciclo3</name>
-	<description>Proyecto para el ciclo 3</description>
+	<description>Proyecto para el ciclo 3 </description>
 	<properties>
-		<java.version>11</java.version>
+		<java.version>17</java.version>
 	</properties>
 	<dependencies>
 		<dependency>
