@@ -16,33 +16,32 @@ public class EnterpriseService {
 
     public List<Enterprise> getAllEnterprise(){
        List<Enterprise> enterpriseList = new ArrayList<>();
-        enterpriseRepository.findAll().forEach(enterpriseList::add); //-> enterpriseList.addAll());
+        enterpriseRepository.findAll().forEach(enterpriseList::add); // otra forma de hacer la agregacion de listas -> enterpriseList.addAll());
 
         return enterpriseList;
     }
         //METODO QUE ME TRAE UN OBJETO DE TIPO EMPRESA CUANDO CUENTO CON UN ID
-
-        // desactivo de aca para abajo por qu eno hace la busqueda de ip por se long
    public Enterprise getEnterpriseById(int id)
     {
 
         return enterpriseRepository.findById(id).get();
     }
 
+    //ESTO ESTA DESCTIVADO Y COEMNTADO POR QUE NO SE BIEN COMO MANEJARLO POR EL TIPO DE BUSQUEDA DE ID EN LONG
+
     //public boolean saveOrUpdateEnterprise(Enterprise enterprise)
     //{
-        //metodo para guardar empresa haciendo una busqueda de id y si es verdadero hace el cambio y en caso contrario no
-        // se usa el findbyid y el get para busca el id de la empresa
-       // Enterprise emp= enterpriseRepository.save(enterprise);
-       // if (enterpriseRepository.findById(emp.getId())!=null)
-       // {
-      //      return true;
-       // }
-       // return false;
-   // }
+    //metodo para guardar empresa haciendo una busqueda de id y si es verdadero hace el cambio y en caso contrario no
+    // se usa el findbyid y el get para busca el id de la empresa
+    // Enterprise emp= enterpriseRepository.save(enterprise);
+    // if (enterpriseRepository.findById(emp.getId())!=null)
+    // {
+    //      return true;
+    // }
+    // return false;
+    // }
 
-    //metodo eliminar empresa registrada
-
+    //METODO ELIMINAR EMPRESA
     public boolean deleteEnterprise(Integer id)
    {
         enterpriseRepository.deleteById(id);

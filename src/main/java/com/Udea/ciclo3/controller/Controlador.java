@@ -18,7 +18,7 @@ public class Controlador {
 
     @GetMapping({"/","/verEmpresas"})
     public String viewEnterprise(Model model){
-        //creo una lista tomada de la empresa services
+        //CREO UNA LISTA TOMADA DE LA ENTREPRISESERVICES
         List<Enterprise> listaEnterprise= enterpriseService.getAllEnterprise();
         model.addAttribute("emplist",listaEnterprise);
         return "verEmpresas";

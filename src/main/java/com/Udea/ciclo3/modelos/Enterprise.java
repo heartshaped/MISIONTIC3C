@@ -19,7 +19,7 @@ public class Enterprise {
     private String Transactions;
     //cuando se hace el mapping se tiene que llamar la misma entidad de manytoone en el otro modelo
     //en este caso dentro de employeed se toma el nombre de enterprises
-    //ojo los nombres de enterprises y enterprice, enterprise es de la tabla transaction y enterprises de empl
+
    @OneToMany(mappedBy ="ObjEmployee", cascade = CascadeType.ALL, orphanRemoval = true)
     List<Employee> employeeList;
    @OneToMany(mappedBy ="enterprise")

@@ -116,11 +116,3 @@ public class Employee {
 
 
 
-// se pude usar tanto list como set, la difirencia radica en com ose ven los datos
-// el uno deja repetir info y el otro no dependiendo de la cantidad o tipo de transacciones
-// anotacion para los compañeros, al momento de crear la entidad user que corresponde a campo de la tabla,
-// deben tener en cuenta que no se repita en la tabla a la cual haran el vinculo en este caso entreprise
-// lo mismo pasa con con transactions, la idea es que primero hagan los vinculos onetoone o onetomany
-// y despues los manytomany o manytoone
-// patine mucho con eso
-//*** b4tHQjsuAGuoPCZ2  contraseña base de datos supabase
