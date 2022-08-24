@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <style>
+  .bg-1 {
+    background-color: #1abc9c; /* Green */
+    color: #ffffff;
+  }
+  </style>
+    <title>Lista de Empresas</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container-fluid bg-1 text-center">
+    <h1>Lista de Empresas</h1>
+
+    <table class="table">
+        <tr>
+            <th>Id</th>
+            <th>Users</th>
+            <th>Image</th>
+            <th>Phone</th>
+            <th>Nit</th>
+            <th>CreatedAt</th>
+            <th>UpdateAt</th>
+            <th>Editar</th>
+            <th>Eliminar</th>
+        </tr>
+        <tr th:each="enterprise: ${emplist}">
+            <td th:text="${enterprise.id}"></td>
+            <td th:text="${enterprise.name}"></td>
+            <td th:text="${enterprise.document}"></td>
+            <td th:text="${enterprise.phone}"></td>
+            <td th:text="${enterprise.createdAt}"></td>
+            <td th:text="${enterprise.updateAt}"></td>
+            <td><button type="button" class="btn-warning"><a th:href="@{https://github.com}">Editar</a></button></td>
+            <td><button type="button" class="btn-danger"><a th:href="@{https://gmail.com}">Eliminar</a></button></td>
+
+        </tr>
+    </table>
+</div>
+
+</body>
+</html>
+
+
+</div>
+
+</body>
+</html>
