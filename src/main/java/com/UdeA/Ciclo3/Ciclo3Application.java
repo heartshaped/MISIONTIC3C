@@ -2,6 +2,7 @@ package com.UdeA.Ciclo3;
 
 import com.UdeA.Ciclo3.modelos.Employee;
 import com.UdeA.Ciclo3.modelos.Enterprise;
+import com.UdeA.Ciclo3.modelos.Transaction;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
@@ -41,10 +42,10 @@ public class Ciclo3Application {
 		// Crear un Nuevo Empleado
 		Employee miempleado = new Employee("Pepe","Zeus","pepe@zeus.com","empleado");
 
-		miempleado.setNombreEmpleado("Paco"); //cambiamos el nombre de la empresa
-		miempleado.setLaEmpresa("Apollo"); //cambiamos el nombre de la direccion
-		miempleado.setEmail("paco@apollo.com"); // cambiamos el nombre del telefono
-		miempleado.setRole("Supervisor"); //cambiamos el nombre del NIT
+		miempleado.setNombreEmpleado("Paco"); //cambiamos el nombre del empleado
+		miempleado.setLaEmpresa("Apollo"); //cambiamos el nombre de la empresa donde trabaja el empleado
+		miempleado.setEmail("paco@apollo.com"); // cambiamos el nombre del correo
+		miempleado.setRole("Supervisor"); //cambiamos el rol del empleado
 
 		String[] array2 = new String[4];
 		array2[0] = miempleado.getNombreEmpleado();
@@ -55,7 +56,24 @@ public class Ciclo3Application {
 		return array2;
 	}
 
+	@GetMapping("/transactions")
+		public String [] transactions (){
+		//crear un movimiento
+		Transaction movimiento = new Transaction("pago de nomina",547822.76f,"Pepe Trueno");
 
+				movimiento.setConcept("deduccion prestamo con intereses"); //cambiamos el concepto
+				movimiento.setAmount(-24100.41f); //cambiamos el valor del movimiento
+				movimiento.setElEmpleado("Paco Perez"); //cambiamos el nombre del empleado
+
+		String s = String.valueOf(movimiento.getAmount()); //me toca cnvertir el float del valor del movimeitno a string para llevarlo al array
+
+		String[] array3 = new String[3];
+		array3[0] = movimiento.getConcept();
+		array3[1] = s;
+		array3[2] = movimiento.getElEmpleado();
+
+		return array3;
+	}
 	public static void main(String[] args) {
 		SpringApplication.run(Ciclo3Application.class, args);
 	}
