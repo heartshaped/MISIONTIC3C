@@ -19,13 +19,13 @@ public class Enterprise {
     private String Transactions;
     //cuando se hace el mapping se tiene que llamar la misma entidad de manytoone en el otro modelo
     //en este caso dentro de employeed se toma el nombre de enterprises
-
+/*
     @OneToMany(mappedBy ="ObjEmployee", cascade = CascadeType.ALL, orphanRemoval = true)
     List<Employee> employeeList;
     @OneToMany(mappedBy ="enterprise")
     List<Transaction> transactionList;
     private LocalDate createdAt, updateAt;
-
+*/
     public String getDocument() {
         return document;
     }
@@ -37,17 +37,17 @@ public class Enterprise {
     public Enterprise() {
     }
 
-    public Enterprise(String name, String document, String phone, String address, String users, String transactions, List<Employee> employeeList, List<Transaction> transactionList, LocalDate createdAt, LocalDate updateAt) {
+    public Enterprise(String name, String document, String phone, String address, String users, String transactions){//, List<Employee> employeeList, List<Transaction> transactionList, LocalDate createdAt, LocalDate updateAt) {
         this.name = name;
         this.document = document;
         this.phone = phone;
         this.address = address;
         this.users = users;
         Transactions = transactions;
-        this.employeeList = employeeList;
-        this.transactionList = transactionList;
-        this.createdAt = createdAt;
-        this.updateAt = updateAt;
+        //this.employeeList = employeeList;
+        //this.transactionList = transactionList;
+        //this.createdAt = createdAt;
+        //this.updateAt = updateAt;
     }
 
     public long getId() {
@@ -98,7 +98,7 @@ public class Enterprise {
         Transactions = transactions;
     }
 
-    public List<Employee> getEmployeeList() {
+    /*public List<Employee> getEmployeeList() {
         return employeeList;
     }
 
@@ -128,5 +128,5 @@ public class Enterprise {
 
     public void setUpdateAt(LocalDate updateAt) {
         this.updateAt = updateAt;
-    }
+    }*/
 }
