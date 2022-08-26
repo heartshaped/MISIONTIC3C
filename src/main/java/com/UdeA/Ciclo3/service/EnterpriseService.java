@@ -1,6 +1,6 @@
 package com.UdeA.Ciclo3.service;
 
-import com.UdeA.Ciclo3.modelos.Enterprise;
+import com.UdeA.Ciclo3.modelos.Empresa;
 import com.UdeA.Ciclo3.repo.EnterpriseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,14 +13,14 @@ public class EnterpriseService {
     @Autowired
     EnterpriseRepository enterpriseRepository;
 
-    public List<Enterprise> getAllEnterprise(){
-        List<Enterprise> enterpriseList = new ArrayList<>();
+    public List<Empresa> getAllEnterprise(){
+        List<Empresa> enterpriseList = new ArrayList<>();
         enterpriseRepository.findAll().forEach(enterpriseList::add); // otra forma de hacer la agregacion de listas -> enterpriseList.addAll());
 
         return enterpriseList;
     }
     //METODO QUE ME TRAE UN OBJETO DE TIPO EMPRESA CUANDO CUENTO CON UN ID
-    public Enterprise getEnterpriseById(int id)
+    public Empresa getEnterpriseById(int id)
     {
 
         return enterpriseRepository.findById(id).get();

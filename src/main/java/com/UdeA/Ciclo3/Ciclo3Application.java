@@ -1,8 +1,8 @@
 package com.UdeA.Ciclo3;
 
-import com.UdeA.Ciclo3.modelos.Employee;
-import com.UdeA.Ciclo3.modelos.Enterprise;
-import com.UdeA.Ciclo3.modelos.Transaction;
+import com.UdeA.Ciclo3.modelos.Empleado;
+import com.UdeA.Ciclo3.modelos.Empresa;
+import com.UdeA.Ciclo3.modelos.MovimientoDinero;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
@@ -22,7 +22,7 @@ public class Ciclo3Application {
 	@GetMapping("/company")
 	public String[] company() {
 		// Crear una Nueva Empresa
-		Enterprise miempresa = new Enterprise("Apollo", "90099887", "123654789", "calle de la buena vida", "Empleado 1", "100");
+		Empresa miempresa = new Empresa("Apollo", "90099887", "123654789", "calle de la buena vida", "Empleado 1", "100");
 
 			miempresa.setName("Zeus"); //cambiamos el nombre de la empresa
 			miempresa.setAddress("carrera a la victoria"); //cambiamos el nombre de la direccion
@@ -40,7 +40,7 @@ public class Ciclo3Application {
 	@GetMapping("/employee")
 	public String[] employee() {
 		// Crear un Nuevo Empleado
-		Employee miempleado = new Employee("Pepe","Zeus","pepe@zeus.com","empleado");
+		Empleado miempleado = new Empleado("Pepe","Zeus","pepe@zeus.com","empleado");
 
 		miempleado.setNombreEmpleado("Paco"); //cambiamos el nombre del empleado
 		miempleado.setLaEmpresa("Apollo"); //cambiamos el nombre de la empresa donde trabaja el empleado
@@ -59,7 +59,7 @@ public class Ciclo3Application {
 	@GetMapping("/transactions")
 		public String [] transactions (){
 		//crear un movimiento
-		Transaction movimiento = new Transaction("pago de nomina",547822.76f,"Pepe Trueno");
+		MovimientoDinero movimiento = new MovimientoDinero("pago de nomina",547822.76f,"Pepe Trueno");
 
 				movimiento.setConcept("deduccion prestamo con intereses"); //cambiamos el concepto
 				movimiento.setAmount(-24100.41f); //cambiamos el valor del movimiento
