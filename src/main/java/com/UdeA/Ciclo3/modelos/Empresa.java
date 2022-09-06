@@ -11,10 +11,13 @@ public class Empresa {
     private String name;
     @Column(name="document",unique = true)
     private String document;
+    @Column(name="phone",unique = true)
     private String phone;
+    @Column(name="address",unique = true)
     private String address;
-    private String users;
-    private String Transactions;
+    //@Column(name="users",unique = true)
+    //private String users;
+    //private String Transactions;
     //cuando se hace el mapping se tiene que llamar la misma entidad de manytoone en el otro modelo
     //en este caso dentro de employeed se toma el nombre de enterprises
 /*
@@ -40,8 +43,8 @@ public class Empresa {
         this.document = document;
         this.phone = phone;
         this.address = address;
-        this.users = users;
-        Transactions = transactions;
+        //this.users = users;
+        //Transactions = transactions;
         //this.employeeList = employeeList;
         //this.transactionList = transactionList;
         //this.createdAt = createdAt;
@@ -80,7 +83,7 @@ public class Empresa {
         this.address = address;
     }
 
-    public String getUsers() {
+    /*public String getUsers() {
         return users;
     }
 
@@ -96,7 +99,7 @@ public class Empresa {
         Transactions = transactions;
     }
 
-    /*public List<Employee> getEmployeeList() {
+   public List<Employee> getEmployeeList() {
         return employeeList;
     }
 

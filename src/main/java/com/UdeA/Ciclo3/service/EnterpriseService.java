@@ -8,13 +8,13 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 
-@Service
+@Service    //indicamos que estamos creando el servicio, que mas adelante nos va permitir realizar el crud es decir manipular la base de datos
 public class EnterpriseService {
-    @Autowired
-    EnterpriseRepository enterpriseRepository;
+    @Autowired  //Conectamos esta clase con el repository de Empresa
+    EnterpriseRepository enterpriseRepository;  //aca es donde hacemos uso de clase abstracta y es donde la implementamos a traves de un objeto llamado "empresaRepository"
 
-    public List<Empresa> getAllEnterprise(){
-        List<Empresa> enterpriseList = new ArrayList<>();
+    public List<Empresa> getAllEnterprise(){    //creo una clase arraylist de las empresas y lo voy a guardar en getallenterprise
+        List<Empresa> enterpriseList = new ArrayList<>();   //creo un array que me va a traer el listado de todas las empresas y me lo guarda en el array empresalist
         enterpriseRepository.findAll().forEach(enterpriseList::add); // otra forma de hacer la agregacion de listas -> enterpriseList.addAll());
 
         return enterpriseList;
@@ -24,6 +24,11 @@ public class EnterpriseService {
     {
 
         return enterpriseRepository.findById(id).get();
+    }
+
+    public Empresa saveOrUpdateEmpresa(Empresa empresa){
+        Empresa comp = enterpriseRepository.save(empresa);
+        return comp;
     }
 
     //ESTO ESTA DESCTIVADO Y COEMNTADO POR QUE NO SE BIEN COMO MANEJARLO POR EL TIPO DE BUSQUEDA DE ID EN LONG

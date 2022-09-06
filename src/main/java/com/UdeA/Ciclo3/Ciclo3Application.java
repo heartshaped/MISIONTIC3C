@@ -19,7 +19,7 @@ public class Ciclo3Application {
 	//	return "Hola Ciclo 3... Saldremos vivos de esto!";
 	//}
 
-	@GetMapping("/company")
+	/*@GetMapping("/company")
 	public String[] company() {
 		// Crear una Nueva Empresa
 		Empresa miempresa = new Empresa("Apollo", "90099887", "123654789", "calle de la buena vida", "Empleado 1", "100");
@@ -73,7 +73,7 @@ public class Ciclo3Application {
 		array3[2] = movimiento.getElEmpleado();
 
 		return array3;
-	}
+	}*/
 	public static void main(String[] args) {
 		SpringApplication.run(Ciclo3Application.class, args);
 	}
