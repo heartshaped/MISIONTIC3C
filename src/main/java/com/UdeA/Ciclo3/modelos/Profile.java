@@ -1,4 +1,4 @@
-package com.UdeA.Ciclo3.modelos;
+/*package com.UdeA.Ciclo3.modelos;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -13,4 +13,4 @@ public class Profile {
     private String users;
     private LocalDate createdAt, updateAt;
 
-}
+}*/

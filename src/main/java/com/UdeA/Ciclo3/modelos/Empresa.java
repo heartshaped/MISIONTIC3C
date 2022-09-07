@@ -6,7 +6,8 @@ import javax.persistence.*;
 @Table(name="Enterprise")
 public class Empresa {
     @Id
-    private long id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
     @Column(name="name", unique = true)
     private String name;
     @Column(name="document",unique = true)
@@ -51,11 +52,11 @@ public class Empresa {
         //this.updateAt = updateAt;
     }
 
-    public long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 

@@ -7,18 +7,28 @@ import java.time.LocalDate;
 @Table(name="transaction")
 public class MovimientoDinero {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String concept;
     private Float amount;
+
+
     private String elEmpleado;
     @ManyToOne
     @JoinColumn(name = "users")
-    Empleado ObjTransation;
-    @ManyToOne
+    private Empleado ObjTransation;
+
+    public Empleado getObjTransation() {
+        return ObjTransation;
+    }
+
+    public void setObjTransation(Empleado ObjTransation) {
+        this.ObjTransation = ObjTransation;
+    }
+    /*@ManyToOne
     @JoinColumn(name = "enterprise")
     Empresa enterprise;
-    private LocalDate createdAt, updateAt;
+    private LocalDate createdAt, updateAt;*/
 
     public MovimientoDinero() {
     }

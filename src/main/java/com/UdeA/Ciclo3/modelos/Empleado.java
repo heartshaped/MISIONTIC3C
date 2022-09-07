@@ -8,30 +8,41 @@ import java.util.List;
 @Table(name="employee")
 public class Empleado {
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
     private int id;
+    @Column(name="nombreEmpleado", unique = true)
     private String nombreEmpleado;
-    private String laEmpresa;
+
     @Column(name="email", unique = true)
     private String email;
-    //@OneToOne(mappedBy = "employee")
+    /*@OneToOne(mappedBy = "employee")
     @OneToOne
     @JoinColumn(name = "profile")
-    private Profile Objprofile;
+    private Profile Objprofile;*/
     private String role;
+    //private String laEmpresa;
     @ManyToOne
-    @JoinColumn(name = "enterprise")
-    Empresa ObjEmployee;
-    @OneToMany(mappedBy ="ObjTransation")
+    @JoinColumn(name = "enterprise_id")
+    private Empresa laEmpresa;
+
+    public Empresa getObjEmployee() {
+        return laEmpresa;
+    }
+
+    public void setObjEmployee(Empresa laEmpresa) {
+        this.laEmpresa = laEmpresa;
+    }
+
+    /*@OneToMany(mappedBy ="ObjTransation")
     List<MovimientoDinero> transactionList;
     private String Transactions;
     private LocalDate createdAt, updateAt;
-
+*/
     public Empleado() {
     }
 
     //constructor para el sprint 2
-    public Empleado(String nombreEmpleado, String laEmpresa, String email, String role) {
+    public Empleado(String nombreEmpleado, Empresa laEmpresa, String email, String role) {
         this.nombreEmpleado = nombreEmpleado;
         this.laEmpresa = laEmpresa;
         this.email = email;
@@ -48,11 +59,11 @@ public class Empleado {
         this.nombreEmpleado = nombreEmpleado;
     }
 
-    public String getLaEmpresa() {
+    public Empresa getLaEmpresa() {
         return laEmpresa;
     }
 
-    public void setLaEmpresa(String laEmpresa) {
+    public void setLaEmpresa(Empresa laEmpresa) {
         this.laEmpresa = laEmpresa;
     }
 
