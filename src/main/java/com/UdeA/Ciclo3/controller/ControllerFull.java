@@ -2,8 +2,10 @@ package com.UdeA.Ciclo3.controller;
 
 import com.UdeA.Ciclo3.modelos.Empleado;
 import com.UdeA.Ciclo3.modelos.Empresa;
+import com.UdeA.Ciclo3.modelos.MovimientoDinero;
 import com.UdeA.Ciclo3.service.EmployeeService;
 import com.UdeA.Ciclo3.service.EnterpriseService;
+import com.UdeA.Ciclo3.service.MovementService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,6 +20,8 @@ public class ControllerFull { // este es el controlador aca es donde se empieza 
     EnterpriseService empresaServicio;
     @Autowired
     EmployeeService employeeService;
+    @Autowired
+    MovementService movementService;
 
     // para manejar las Empresas
     @GetMapping("/Companies") //Ver json de todas las empresas
@@ -96,4 +100,50 @@ public class ControllerFull { // este es el controlador aca es donde se empieza 
         }
         return "No se ha eliminado correctamente el empleado con el id" + id;
     }
+    // para manejar los movimientos
+    @GetMapping("/Transaction") //Consultar todos los movimientos
+    public List<MovimientoDinero> verMovimientos(){
+        return movementService.getAllMovement();
+    }
+
+    @PostMapping("/Transaction")
+    public MovimientoDinero guardarMovimiento(@RequestBody MovimientoDinero movimiento){
+        return movementService.saveOrUpdateMovement(movimiento);
+    }
+
+    @GetMapping("/Transaction/{id}") //Consultar movimiento por id
+    public MovimientoDinero movimientoPorId(@PathVariable("id") Integer id){
+        return movementService.getMovementById(id);
+    }
+
+    @PatchMapping("/Transaction/{id}")//Editar o actualizar un movimiento
+    public MovimientoDinero actualizarMovimiento(@PathVariable("id") Integer id, @RequestBody MovimientoDinero movimiento){
+        MovimientoDinero move = movementService.getMovementById(id);
+        move.setConcept(movimiento.getConcept());
+        move.setAmount(movimiento.getAmount());
+        move.setElEmpleado(movimiento.getElEmpleado());
+        return movementService.saveOrUpdateMovement(move);
+    }
+
+    @DeleteMapping("/Transaction/{id}")
+    public String deleteMovimiento(@PathVariable("id") Integer id){
+        boolean respuesta= movementService.deleteMovement(id);
+        if (respuesta){
+            return "Se elimino correctamente el movimiento con id " + id;
+        }
+        return "No se pudo eliminar el movimiento con id " + id;
+    }
+
+    @GetMapping("/Collaborator/{id}/Transaction") //Consultar movimientos por id del empleado
+    public ArrayList<MovimientoDinero> movimientosPorEmpleado(@PathVariable("id") Integer id){
+        return movementService.getByEmployee(id);
+    }
+
+    @GetMapping("/Companies/{id}/Transaction") //Consultar movimientos que pertenecen a una empresa por el id de la empresa
+    public ArrayList<MovimientoDinero> movimientosPorEmpresa(@PathVariable("id") Integer id){
+        return movementService.getByEnterprise(id);
+    }
+
+
 }
+

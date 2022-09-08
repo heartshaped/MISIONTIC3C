@@ -8,24 +8,21 @@ import java.time.LocalDate;
 public class MovimientoDinero {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private int id;
     private String concept;
     private Float amount;
-
-
-    private String elEmpleado;
     @ManyToOne
     @JoinColumn(name = "users")
-    private Empleado ObjTransation;
+    private Empleado elEmpleado;
 
     public Empleado getObjTransation() {
-        return ObjTransation;
+        return elEmpleado;
     }
 
-    public void setObjTransation(Empleado ObjTransation) {
-        this.ObjTransation = ObjTransation;
+    /*public void setObjTransation(Empleado ObjTransation) {
+        this.elEmpleado = ObjTransation;
     }
-    /*@ManyToOne
+    @ManyToOne
     @JoinColumn(name = "enterprise")
     Empresa enterprise;
     private LocalDate createdAt, updateAt;*/
@@ -33,7 +30,7 @@ public class MovimientoDinero {
     public MovimientoDinero() {
     }
 
-    public MovimientoDinero(String concept, Float amount, String elEmpleado) {
+    public MovimientoDinero(String concept, Float amount, Empleado elEmpleado) {
         this.concept = concept;
         this.amount = amount;
         this.elEmpleado = elEmpleado;
@@ -55,11 +52,11 @@ public class MovimientoDinero {
         this.amount = amount;
     }
 
-    public String getElEmpleado() {
+    public Empleado getElEmpleado() {
         return elEmpleado;
     }
 
-    public void setElEmpleado(String elEmpleado) {
+    public void setElEmpleado(Empleado elEmpleado) {
         this.elEmpleado = elEmpleado;
     }
 
