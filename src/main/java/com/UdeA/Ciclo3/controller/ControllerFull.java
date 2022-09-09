@@ -31,6 +31,7 @@ public class ControllerFull { // este es el controlador aca es donde se empieza 
 
     @PostMapping("/Companies") //Guardar el json del body como una nueva empresa o registro en nuestra bd
     public Empresa guardaLaEmpresa(@RequestBody Empresa comp){
+
         return this.empresaServicio.saveOrUpdateEmpresa(comp);
     }
 
@@ -101,22 +102,25 @@ public class ControllerFull { // este es el controlador aca es donde se empieza 
         return "No se ha eliminado correctamente el empleado con el id" + id;
     }
     // para manejar los movimientos
-    @GetMapping("/Transaction") //Consultar todos los movimientos
+    @GetMapping("/Transactions") //Consultar todos los movimientos
     public List<MovimientoDinero> verMovimientos(){
         return movementService.getAllMovement();
     }
 
-    @PostMapping("/Transaction")
-    public MovimientoDinero guardarMovimiento(@RequestBody MovimientoDinero movimiento){
-        return movementService.saveOrUpdateMovement(movimiento);
+    @PostMapping("/Transactions")
+    public Optional<MovimientoDinero> saveMovimiento (@RequestBody MovimientoDinero movimiento) {
+        return Optional.ofNullable(this.movementService.saveOrUpdateMovement(movimiento));
     }
+    /*public MovimientoDinero guardarMovimiento(@RequestBody MovimientoDinero move){
+        return movementService.saveOrUpdateMovement(move);
+    }*/
 
-    @GetMapping("/Transaction/{id}") //Consultar movimiento por id
+    @GetMapping("/Transactions/{id}") //Consultar movimiento por id
     public MovimientoDinero movimientoPorId(@PathVariable("id") Integer id){
         return movementService.getMovementById(id);
     }
 
-    @PatchMapping("/Transaction/{id}")//Editar o actualizar un movimiento
+    @PatchMapping("/Transactions/{id}")//Editar o actualizar un movimiento
     public MovimientoDinero actualizarMovimiento(@PathVariable("id") Integer id, @RequestBody MovimientoDinero movimiento){
         MovimientoDinero move = movementService.getMovementById(id);
         move.setConcept(movimiento.getConcept());
@@ -125,7 +129,7 @@ public class ControllerFull { // este es el controlador aca es donde se empieza 
         return movementService.saveOrUpdateMovement(move);
     }
 
-    @DeleteMapping("/Transaction/{id}")
+    @DeleteMapping("/Transactions/{id}")
     public String deleteMovimiento(@PathVariable("id") Integer id){
         boolean respuesta= movementService.deleteMovement(id);
         if (respuesta){
@@ -134,12 +138,12 @@ public class ControllerFull { // este es el controlador aca es donde se empieza 
         return "No se pudo eliminar el movimiento con id " + id;
     }
 
-    @GetMapping("/Collaborator/{id}/Transaction") //Consultar movimientos por id del empleado
+    @GetMapping("/Collaborator/{id}/Transactions") //Consultar movimientos por id del empleado
     public ArrayList<MovimientoDinero> movimientosPorEmpleado(@PathVariable("id") Integer id){
         return movementService.getByEmployee(id);
     }
 
-    @GetMapping("/Companies/{id}/Transaction") //Consultar movimientos que pertenecen a una empresa por el id de la empresa
+    @GetMapping("/Companies/{id}/Transactions") //Consultar movimientos que pertenecen a una empresa por el id de la empresa
     public ArrayList<MovimientoDinero> movimientosPorEmpresa(@PathVariable("id") Integer id){
         return movementService.getByEnterprise(id);
     }

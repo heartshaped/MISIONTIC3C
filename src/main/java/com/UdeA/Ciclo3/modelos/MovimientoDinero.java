@@ -1,5 +1,6 @@
 package com.UdeA.Ciclo3.modelos;
-
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
 import javax.persistence.*;
 import java.time.LocalDate;
 
@@ -9,20 +10,16 @@ public class MovimientoDinero {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    @Column(name="concept", unique = true)
     private String concept;
+    @Column(name="amount", unique = true)
     private Float amount;
     @ManyToOne
-    @JoinColumn(name = "users")
+    //@Cascade({CascadeType.ALL})
+    @JoinColumn(name = "el_empleado_id")
     private Empleado elEmpleado;
 
-    public Empleado getObjTransation() {
-        return elEmpleado;
-    }
-
-    /*public void setObjTransation(Empleado ObjTransation) {
-        this.elEmpleado = ObjTransation;
-    }
-    @ManyToOne
+    /*@ManyToOne
     @JoinColumn(name = "enterprise")
     Empresa enterprise;
     private LocalDate createdAt, updateAt;*/
@@ -35,6 +32,9 @@ public class MovimientoDinero {
         this.amount = amount;
         this.elEmpleado = elEmpleado;
     }
+    public int getId() {return id;}
+
+    public void setId(int id) {this.id = id;}
 
     public String getConcept() {
         return concept;

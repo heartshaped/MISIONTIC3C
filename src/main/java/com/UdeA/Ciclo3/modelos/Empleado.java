@@ -25,7 +25,7 @@ public class Empleado {
     @JoinColumn(name = "enterprise_id")
     private Empresa laEmpresa;
 
-    public Empresa getObjEmployee() {
+    /*public Empresa getObjEmployee() {
         return laEmpresa;
     }
 
@@ -33,7 +33,7 @@ public class Empleado {
         this.laEmpresa = laEmpresa;
     }
 
-    /*@OneToMany(mappedBy ="ObjTransation")
+    @OneToMany(mappedBy ="ObjTransation")
     List<MovimientoDinero> transactionList;
     private String Transactions;
     private LocalDate createdAt, updateAt;
@@ -50,7 +50,8 @@ public class Empleado {
     }
 
     //getter and setter para sprint2
-
+    public int getId() {return id;}
+    public void setId(int id) {this.id = id;}
     public String getNombreEmpleado() {
         return nombreEmpleado;
     }
