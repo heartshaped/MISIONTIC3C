@@ -49,7 +49,7 @@ public class EnterpriseService {
     public boolean deleteEnterprise(Integer id)
     {
         enterpriseRepository.deleteById(id);
-        if(getEnterpriseById(id)!=null)
+        if(enterpriseRepository.findById(id)!=null)
         {
             return false;
         }

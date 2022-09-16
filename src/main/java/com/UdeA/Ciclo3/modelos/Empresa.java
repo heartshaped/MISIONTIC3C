@@ -8,13 +8,13 @@ public class Empresa {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    @Column(name="name", unique = true)
+
     private String name;
-    @Column(name="document",unique = true)
+
     private String document;
-    @Column(name="phone",unique = true)
+
     private String phone;
-    @Column(name="address",unique = true)
+
     private String address;
     //@Column(name="users",unique = true)
     //private String users;

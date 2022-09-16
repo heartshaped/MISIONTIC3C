@@ -10,13 +10,13 @@ public class MovimientoDinero {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    @Column(name="concept", unique = true)
+
     private String concept;
-    @Column(name="amount", unique = true)
+
     private Float amount;
     @ManyToOne
     //@Cascade({CascadeType.ALL})
-    @JoinColumn(name = "el_empleado_id")
+    @JoinColumn(name = "elempleado_id")
     private Empleado elEmpleado;
 
     /*@ManyToOne

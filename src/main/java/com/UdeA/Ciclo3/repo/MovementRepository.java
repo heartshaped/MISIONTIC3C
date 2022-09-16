@@ -11,10 +11,10 @@ import java.util.ArrayList;
 public interface MovementRepository extends CrudRepository<MovimientoDinero, Integer> {
 
     //buscar movimientos por empleado
-    @Query(value ="select * from transaction where el_Empleado_id = ?1", nativeQuery = true)
+    @Query(value ="select * from transaction where elempleado_id = ?1", nativeQuery = true)
     public abstract ArrayList<MovimientoDinero> findByEmployee (Integer id);
 
     //buscar movimientos por empresa
-    @Query (value = "select * from transaction  where el_Empleado_id in (select id from employee where enterprise_id = ?1)", nativeQuery = true)
+    @Query (value = "select * from transaction  where elempleado_id in (select id from employee where enterprise_id = ?1)", nativeQuery = true)
     public abstract ArrayList<MovimientoDinero> findByEnterprise(Integer id);
 }

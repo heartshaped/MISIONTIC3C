@@ -32,10 +32,10 @@ public class ControllerFull { // este es el controlador aca es donde se empieza 
     @PostMapping("/Companies") //Guardar el json del body como una nueva empresa o registro en nuestra bd
     public Empresa guardaLaEmpresa(@RequestBody Empresa comp){
 
-        return this.empresaServicio.saveOrUpdateEmpresa(comp);
+        return empresaServicio.saveOrUpdateEmpresa(comp);
     }
 
-    @GetMapping(path = "Companies/{id}")
+    @GetMapping(path = "Companies/{id}") //ver empresas por id
     public Empresa empresaPorID(@PathVariable("id") Integer id){
         return this.empresaServicio.getEnterpriseById(id);
     }
@@ -55,10 +55,10 @@ public class ControllerFull { // este es el controlador aca es donde se empieza 
     public String DeleteEmpresa(@PathVariable("id") Integer id){
         boolean respuesta = this.empresaServicio.deleteEnterprise(id);
         if (respuesta){  //Si respuesta es verdadera
-            return "Se ha eliminado la empresa con el id" +id;
+            return " No Se ha eliminado la empresa con el id" + id;
         }
         else{
-            return "No se ha podido eliminar la empresa con el id"+id;
+            return "se ha podido eliminar la empresa con el id" + id;
         }
     }
 
@@ -70,16 +70,16 @@ public class ControllerFull { // este es el controlador aca es donde se empieza 
 
     @PostMapping ("/Collaborator")   //metodo para guardar un nuevo empleado
     public Optional<Empleado> saveEmpleado(@RequestBody Empleado worker){
-        return Optional.ofNullable(this.employeeService.saveOrUpdateEmployee(worker));
+        return Optional.ofNullable(employeeService.saveOrUpdateEmployee(worker));
     }
 
     @GetMapping (path = "Collaborator/{id}")      //buscar empleados por id
     public Optional<Empleado> employeeByEnterprise (@PathVariable("id")Integer id){
-        return this.employeeService.getEmployeeById(id);
+        return employeeService.getEmployeeById(id);
     }
     @GetMapping("/Companies/{id}/Collaborator") //consultar los empleados que pertencecen a una empresa
     public ArrayList<Empleado> EmployeeByEnterprise(@PathVariable("id")Integer id){
-        return this.employeeService.buscaPorEmpresa(id);
+        return employeeService.buscaPorEmpresa(id);
     }
 
     @PatchMapping("Collaborator/{id}") // actualizamos la informacion del empleado en la base de datos
@@ -109,7 +109,7 @@ public class ControllerFull { // este es el controlador aca es donde se empieza 
 
     @PostMapping("/Transactions")
     public Optional<MovimientoDinero> saveMovimiento (@RequestBody MovimientoDinero movimiento) {
-        return Optional.ofNullable(this.movementService.saveOrUpdateMovement(movimiento));
+        return Optional.ofNullable(movementService.saveOrUpdateMovement(movimiento));
     }
     /*public MovimientoDinero guardarMovimiento(@RequestBody MovimientoDinero move){
         return movementService.saveOrUpdateMovement(move);

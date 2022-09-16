@@ -10,10 +10,10 @@ public class Empleado {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private int id;
-    @Column(name="nombreEmpleado", unique = true)
+
     private String nombreEmpleado;
 
-    @Column(name="email", unique = true)
+
     private String email;
     /*@OneToOne(mappedBy = "employee")
     @OneToOne
