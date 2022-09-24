@@ -1,12 +1,8 @@
 package com.UdeA.Ciclo3;
 
-import com.UdeA.Ciclo3.modelos.Empleado;
-import com.UdeA.Ciclo3.modelos.Empresa;
-import com.UdeA.Ciclo3.modelos.MovimientoDinero;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 

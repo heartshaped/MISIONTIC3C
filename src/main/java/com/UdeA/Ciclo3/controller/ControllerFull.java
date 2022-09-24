@@ -1,6 +1,6 @@
-package com.UdeA.Ciclo3.controller;
+/*package com.UdeA.Ciclo3.controller;
 
-import com.UdeA.Ciclo3.modelos.Empleado;
+import com.UdeA.Ciclo3.modelos.Employee;
 import com.UdeA.Ciclo3.modelos.Empresa;
 import com.UdeA.Ciclo3.modelos.MovimientoDinero;
 import com.UdeA.Ciclo3.service.EmployeeService;
@@ -64,27 +64,27 @@ public class ControllerFull { // este es el controlador aca es donde se empieza 
 
     // para manejar los empleados
     @GetMapping ("/Collaborator") //vemos el listado de todos los empleados
-    public List<Empleado> seeEmployee(){
+    public List<Employee> seeEmployee(){
         return employeeService.getAllEmployee();
     }
 
     @PostMapping ("/Collaborator")   //metodo para guardar un nuevo empleado
-    public Optional<Empleado> saveEmpleado(@RequestBody Empleado worker){
+    public Optional<Employee> saveEmpleado(@RequestBody Employee worker){
         return Optional.ofNullable(employeeService.saveOrUpdateEmployee(worker));
     }
 
     @GetMapping (path = "Collaborator/{id}")      //buscar empleados por id
-    public Optional<Empleado> employeeByEnterprise (@PathVariable("id")Integer id){
+    public Optional<Employee> employeeByEnterprise (@PathVariable("id")Integer id){
         return employeeService.getEmployeeById(id);
     }
     @GetMapping("/Companies/{id}/Collaborator") //consultar los empleados que pertencecen a una empresa
-    public ArrayList<Empleado> EmployeeByEnterprise(@PathVariable("id")Integer id){
+    public ArrayList<Employee> EmployeeByEnterprise(@PathVariable("id")Integer id){
         return employeeService.buscaPorEmpresa(id);
     }
 
     @PatchMapping("Collaborator/{id}") // actualizamos la informacion del empleado en la base de datos
-    public Empleado actualizaEmployee(@PathVariable("id")Integer id,@RequestBody Empleado empleado){
-        Empleado worker = employeeService.getEmployeeById(id).get();
+    public Employee actualizaEmployee(@PathVariable("id")Integer id, @RequestBody Employee empleado){
+        Employee worker = employeeService.getEmployeeById(id).get();
         worker.setNombreEmpleado(empleado.getNombreEmpleado());
         worker.setEmail(empleado.getEmail());
         worker.setLaEmpresa(empleado.getLaEmpresa());
@@ -111,9 +111,9 @@ public class ControllerFull { // este es el controlador aca es donde se empieza 
     public Optional<MovimientoDinero> saveMovimiento (@RequestBody MovimientoDinero movimiento) {
         return Optional.ofNullable(movementService.saveOrUpdateMovement(movimiento));
     }
-    /*public MovimientoDinero guardarMovimiento(@RequestBody MovimientoDinero move){
+    public MovimientoDinero guardarMovimiento(@RequestBody MovimientoDinero move){
         return movementService.saveOrUpdateMovement(move);
-    }*/
+    }
 
     @GetMapping("/Transactions/{id}") //Consultar movimiento por id
     public MovimientoDinero movimientoPorId(@PathVariable("id") Integer id){
@@ -149,5 +149,5 @@ public class ControllerFull { // este es el controlador aca es donde se empieza 
     }
 
 
-}
+}*/
 

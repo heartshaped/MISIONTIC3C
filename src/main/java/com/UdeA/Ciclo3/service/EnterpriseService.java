@@ -1,6 +1,6 @@
 package com.UdeA.Ciclo3.service;
 
-import com.UdeA.Ciclo3.modelos.Empresa;
+import com.UdeA.Ciclo3.modelos.Enterprise;
 import com.UdeA.Ciclo3.repo.EnterpriseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,23 +13,26 @@ public class EnterpriseService {
     @Autowired  //Conectamos esta clase con el repository de Empresa
     EnterpriseRepository enterpriseRepository;  //aca es donde hacemos uso de clase abstracta y es donde la implementamos a traves de un objeto llamado "empresaRepository"
 
-    public List<Empresa> getAllEnterprise(){    //creo una clase arraylist de las empresas y lo voy a guardar en getallenterprise
-        List<Empresa> enterpriseList = new ArrayList<>();   //creo un array que me va a traer el listado de todas las empresas y me lo guarda en el array empresalist
-        enterpriseRepository.findAll().forEach(enterpriseList::add); // otra forma de hacer la agregacion de listas -> enterpriseList.addAll());
+    public List<Enterprise> getAllEnterprise() {    //creo una clase arraylist de las empresas y lo voy a guardar en getallenterprise
+        List<Enterprise> enterpriseList = new ArrayList<>();   //creo un array que me va a traer el listado de todas las empresas y me lo guarda en el array empresalist
+        enterpriseRepository.findAll().forEach(enterprise -> enterpriseList.add(enterprise)); // otra forma de hacer la agregacion de listas -> enterpriseList.addAll());
 
         return enterpriseList;
     }
-    //METODO QUE ME TRAE UN OBJETO DE TIPO EMPRESA CUANDO CUENTO CON UN ID
-    public Empresa getEnterpriseById(int id)
-    {
 
+    //METODO QUE ME TRAE UN OBJETO DE TIPO EMPRESA CUANDO CUENTO CON UN ID
+    public Enterprise getEnterpriseById(long id) {
         return enterpriseRepository.findById(id).get();
     }
 
-    public Empresa saveOrUpdateEmpresa(Empresa empresa){
-        Empresa comp = enterpriseRepository.save(empresa);
-        return comp;
+    public Boolean saveOrUpdateEnterprise(Enterprise empresa) {
+        Enterprise comp = enterpriseRepository.save(empresa);
+        if (enterpriseRepository.findById(comp.getId())!=null) {
+            return true;
+        }
+        return false;
     }
+
 
     //ESTO ESTA DESCTIVADO Y COEMNTADO POR QUE NO SE BIEN COMO MANEJARLO POR EL TIPO DE BUSQUEDA DE ID EN LONG
 
@@ -46,13 +49,13 @@ public class EnterpriseService {
     // }
 
     //METODO ELIMINAR EMPRESA
-    public boolean deleteEnterprise(Integer id)
+    public Boolean deleteEnterprise(Long id)
     {
         enterpriseRepository.deleteById(id);
         if(enterpriseRepository.findById(id)!=null)
         {
-            return false;
+            return true;
         }
-        return true;
+        return false;
     }
 }
